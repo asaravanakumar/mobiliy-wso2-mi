@@ -1,0 +1,9 @@
+
+#ISSUE: Ports are not available: listen tcp 0.0.0.0/61616: bind: An attempt was made to access a socket in a way forbidden by its access permissions
+#Restart tcp process to fix busy port issue / permission issue
+
+Open Command Prompt as Administrator and run the below command
+
+net stop winnat
+net start winnat
+

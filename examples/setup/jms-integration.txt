@@ -1,0 +1,44 @@
+STEP 1] Start ActiveMQ server
+
+STEP 2] Run JMS Integration project on Micro Integrater from Integration Studio
+
+Select the Embedded Micro Integrator Server Configuration Wizard   from the tool bar and add the following config to the Edit embeddeddeployment.toml file section to enable the ActiveMQ sender and listener transport.
+
+[transport.jms]
+sender_enable = true
+listener_enable = true
+
+[[transport.jms.sender]]
+name = "default"
+parameter.initial_naming_factory = "org.apache.activemq.jndi.ActiveMQInitialContextFactory"
+parameter.provider_url = "tcp://localhost:61616"
+parameter.username = artemis
+parameter.password = artemis
+parameter.connection_factory_name = "QueueConnectionFactory"
+parameter.connection_factory_type = "queue"
+parameter.cache_level = "producer"
+
+[[transport.jms.listener]]
+name = "myQueueConnectionFactory"
+parameter.initial_naming_factory = "org.apache.activemq.jndi.ActiveMQInitialContextFactory"
+parameter.provider_url = "tcp://localhost:61616"
+parameter.username = artemis
+parameter.password = artemis
+parameter.connection_factory_name = "QueueConnectionFactory"
+parameter.connection_factory_type = "queue"
+
+STEP 3] Add the following libraries (available in ACTIVEMQ_HOME/lib) to the Embedded Micro Integrator Server Configuration  Wizard's  Select libraries section by clicking the + icon.
+
+activemq-broker-5.17.6.jar
+activemq-client-5.17.6.jar
+activemq-kahadb-store-5.17.0.jar
+geronimo-jms_1.1_spec-1.1.1.jar
+geronimo-j2ee-management_1.1_spec-1.0.1.jar
+geronimo-jta_1.0.1B_spec-1.1.1.jar
+hawtbuf-1.11.jar
+slf4j-api-1.7.36.jar
+activeio-core-3.1.4.jar (available in the ACTIVEMQ_HOME/lib/optional directory)
+
+STEP 4] Save and Run the application on Micro Integrator
+
+
