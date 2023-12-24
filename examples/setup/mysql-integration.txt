@@ -1,0 +1,21 @@
+STEP 1] Start MySQL Server from Docker Compose
+
+docker-compose -f mysql-adminer.yaml up -d
+
+STEP 2] Access Adminer Web UI and verify the connectivity to the server
+
+http://localhost:8080
+
+hostname: <mysql-container-ip>
+username: user
+password: password
+database: student_db
+
+STEP 3] Download and add mysql driver library to the Embedded Micro Integrator Server Configuration  Wizard's  Select libraries section by clicking the + icon.
+
+mysql-connector-java-8.0.19.jar
+
+STEP 4] Save and Verify the Datasource Connectivity
+
+STEP 5] Run the application on Micro Integrator
+
