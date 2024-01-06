@@ -1,0 +1,16 @@
+STEP 1] Start RabbitMQ server
+
+STEP 2] Run RabbitMQ Integration project on Micro Integrater from Integration Studio
+
+Select the Embedded Micro Integrator Server Configuration Wizard   from the tool bar and add the following config to the Edit embeddeddeployment.toml file section to enable the RabbitMQ sender and listener transport.
+
+[transport.rabbitmq]
+sender_enable = true
+
+STEP 3] Add the following libraries (available under mobilily-wso2-mi/examples/setup/rabbitmq-jars) to the Embedded Micro Integrator Server Configuration  Wizard's  Select libraries section by clicking the + icon.
+
+amqp-client-5.20.0.jar
+
+STEP 4] Save and Run the application on Micro Integrator
+
+

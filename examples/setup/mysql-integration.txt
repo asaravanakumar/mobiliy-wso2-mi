@@ -1,8 +1,11 @@
-STEP 1] Start MySQL Server from Docker Compose
+STEP 1] Open command prompt/terminal and navigate to the mysql-adminer.yaml file location
+e.g: ${MOBILIY-WSO2-MI-REPO-HOME}/examples/setup
+
+STEP 2] Start MySQL Server from Docker Compose
 
 docker-compose -f mysql-adminer.yaml up -d
 
-STEP 2] Access Adminer Web UI and verify the connectivity to the server
+STEP 3] Access Adminer Web UI and verify the connectivity to the server
 
 http://localhost:8080
 
@@ -11,15 +14,34 @@ username: user
 password: password
 database: school_db
 
-STEP 3] Download and add mysql driver library to the Embedded Micro Integrator Server Configuration  Wizard's  Select libraries section by clicking the + icon.
+STEP 4] [OPTIONAL] Create database and table and insert sample data
+
+CREATE DATABASE school_db;
+USE school_db;
+CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON school_db.* TO 'user'@'localhost';
+
+CREATE TABLE `students` (
+`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`name` varchar(50) DEFAULT NULL,
+`school` varchar(50) DEFAULT NULL,
+`grade` varchar(50) DEFAULT NULL,
+PRIMARY KEY (`id`)
+)
+
+INSERT INTO students (name, school, grade) VALUES
+('Tim', 'Summer School', 7),
+('Peter', 'Burnley High School', 10);
+
+STEP 5] Download and add mysql driver library to the Embedded Micro Integrator Server Configuration  Wizard's  Select libraries section by clicking the + icon.
 
 mysql-connector-java-8.0.19.jar
 
-STEP 4] Save and Verify the Datasource Connectivity
+STEP 6] Save and Verify the Datasource Connectivity
 
-STEP 5] Run the application on Micro Integrator
+STEP 7] Run the application on Micro Integrator
 
-STEP 6] Verify the service
+STEP 8] Verify the service
 
 GET http://localhost:8290/services/RESTDataService/student
 
@@ -36,7 +58,7 @@ POST http://localhost:8290/services/RESTDataService/student
 }
 
 
-STEP 7] Stop MySQL server container
+STEP 9] Stop MySQL server container
 
 docker-compose -f mysql-adminer.yaml down
 

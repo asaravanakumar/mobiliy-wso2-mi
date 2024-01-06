@@ -1,6 +1,14 @@
-#ActiveMQ Docker
+#ActiveMQ Docker (ActiveMQ Classic)
 docker run -d --name activemq -p 61616:61616 -p 8161:8161 apache/activemq-classic:5.17.6
 
 http://localhost:8161
 
 Username/Password: admin/admin
+
+#ActiveMQ Docker (ActiveMQ Artemis)
+docker run -d --name activemq -p 61616:61616 -p 8161:8161 apache/activemq-artemis
+
+http://localhost:8161
+
+Username/Password: artemis/artemis
+
